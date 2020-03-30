@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/hello', 'HomeController@index');
+Route::resource('/clients', 'ClientController');
