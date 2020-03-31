@@ -16,4 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', 'HomeController@index');
-Route::resource('/clients', 'ClientController');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'dashboard'], function () {
+    Route::resource('/clients', 'ClientController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
